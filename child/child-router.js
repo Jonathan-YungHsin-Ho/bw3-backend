@@ -44,7 +44,22 @@ router.get('/:id', (req, res) => {
 // DELETE /api/children/:id endpoint to Delete a child -
 
 // GET /api/children/:id/screenings to Retrieve screenings by child -
-router.get('/:id/screenings', (req, res) => {});
+router.get('/:id/screenings', (req, res) => {
+  Children.findScreenings(req.params.id)
+    .then(screenings => {
+      if (screenings.length) {
+        res.status(200).json(screenings);
+      } else {
+        res.status(404).json({
+          message: 'Could not find find screenings for given country',
+        });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Failed to get screenings' });
+    });
+});
 
 // POST /api/countries/:id/screenings to Create a new community by country -
 

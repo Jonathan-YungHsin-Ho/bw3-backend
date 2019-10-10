@@ -43,22 +43,10 @@ exports.up = function(knex) {
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
     })
-    .createTable('height_records', tbl => {
+    .createTable('screenings', tbl => {
       tbl.increments();
       tbl.date('date').notNullable();
       tbl.float('height').notNullable();
-      tbl
-        .integer('child_id')
-        .unsigned()
-        .notNullable()
-        .references('id')
-        .inTable('children')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
-    })
-    .createTable('weight_records', tbl => {
-      tbl.increments();
-      tbl.date('date').notNullable();
       tbl.float('weight').notNullable();
       tbl
         .integer('child_id')
@@ -73,8 +61,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.schema
-    .dropTableIfExists('weight_records')
-    .dropTableIfExists('height_records')
+    .dropTableIfExists('screenings')
     .dropTableIfExists('children')
     .dropTableIfExists('communities')
     .dropTableIfExists('countries');

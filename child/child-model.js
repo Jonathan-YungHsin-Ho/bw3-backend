@@ -3,6 +3,7 @@ const db = require('../data/dbConfig');
 module.exports = {
   find,
   findById,
+  findScreenings,
 };
 
 function find() {
@@ -37,4 +38,17 @@ function findById(id) {
     )
     .where({ child_id: id })
     .first();
+}
+
+function findScreenings(id) {
+  return db('screenings')
+    .join('children', 'children.id', 'screenings.child_id')
+    .select(
+      'screenings.id',
+      'screenings.date',
+      'screenings.height',
+      'screenings.weight',
+      'children.name',
+    )
+    .where({ child_id: id });
 }

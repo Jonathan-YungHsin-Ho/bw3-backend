@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
 
 // DELETE /api/communities/:id endpoint to Delete a community -
 
-// GET /api/communities/:id/children endpoint to Retrieve children by community -
+// GET /api/communities/:id/children endpoint to Retrieve children by community - FUNCTIONAL
 router.get('/:id/children', (req, res) => {
   Communities.findChildren(req.params.id)
     .then(children => {
