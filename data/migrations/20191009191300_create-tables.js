@@ -2,7 +2,10 @@ exports.up = function(knex) {
   return knex.schema
     .createTable('countries', tbl => {
       tbl.increments();
-      tbl.string('country', 128).notNullable();
+      tbl
+        .string('country', 128)
+        .notNullable()
+        .unique();
     })
     .createTable('communities', tbl => {
       tbl.increments();

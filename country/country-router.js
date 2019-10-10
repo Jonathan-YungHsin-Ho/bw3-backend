@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET /api/countries/:id endpoint to Retrieve country by ID -
+// GET /api/countries/:id endpoint to Retrieve country by ID - FUNCTIONAL
 router.get('/:id', (req, res) => {
   Countries.findById(req.params.id)
     .then(country => {
@@ -44,7 +44,23 @@ router.get('/:id', (req, res) => {
 
 // DELETE /api/countries/:id endpoint to Delete a country -
 
-// GET /api/countries/:id/communities to Retrieve communities by country -
+// GET /api/countries/:id/communities to Retrieve communities by country - FUNCTIONAL
+router.get('/:id/communities', (req, res) => {
+  Countries.findCommunities(req.params.id)
+    .then(communities => {
+      if (communities.length) {
+        res.status(200).json(communities);
+      } else {
+        res.status(404).json({
+          message: 'Could not find find communities for given country',
+        });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Failed to get communities' });
+    });
+});
 
 // POST /api/countries/:id/communities to Create a new community by country -
 

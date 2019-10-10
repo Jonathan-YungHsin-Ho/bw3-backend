@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET /api/communities/:id endpoint to Retrieve community by ID -
+// GET /api/communities/:id endpoint to Retrieve community by ID - FUNCTIONAL
 router.get('/:id', (req, res) => {
   console.log(req.params.id);
   Communities.findById(req.params.id)

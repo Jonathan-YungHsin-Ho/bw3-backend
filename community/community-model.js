@@ -6,7 +6,13 @@ module.exports = {
 };
 
 function find() {
-  return db('communities');
+  return db('communities')
+    .join('countries', 'countries.id', 'communities.country_id')
+    .select(
+      'communities.id as community_id',
+      'communities.community',
+      'countries.country',
+    );
 }
 
 function findById(id) {
