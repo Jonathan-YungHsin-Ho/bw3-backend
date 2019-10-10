@@ -3,6 +3,7 @@ const db = require('../data/dbConfig');
 module.exports = {
   find,
   findById,
+  findChildren,
 };
 
 function find() {
@@ -25,4 +26,21 @@ function findById(id) {
     )
     .where({ community_id: id })
     .first();
+}
+
+function findChildren(id) {
+  return db('children')
+    .join('countries', 'countries.id', 'children.country_id')
+    .join('communities', 'communities.id', 'children.community_id')
+    .select(
+      'children.id',
+      'children.name',
+      'children.parent_name',
+      'children.contact',
+      'children.gender',
+      'children.DOB',
+      'countries.country',
+      'communities.community',
+    )
+    .where({ community_id: id });
 }

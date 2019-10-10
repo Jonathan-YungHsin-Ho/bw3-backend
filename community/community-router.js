@@ -43,6 +43,24 @@ router.get('/:id', (req, res) => {
 
 // DELETE /api/communities/:id endpoint to Delete a community -
 
+// GET /api/communities/:id/children endpoint to Retrieve children by community -
+router.get('/:id/children', (req, res) => {
+  Communities.findChildren(req.params.id)
+    .then(children => {
+      if (children.length) {
+        res.status(200).json(children);
+      } else {
+        res.status(404).json({
+          message: 'Could not find find children for given country',
+        });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Failed to get children' });
+    });
+});
+
 // **********************************************************************
 
 module.exports = router;

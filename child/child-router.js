@@ -44,6 +44,7 @@ router.get('/:id', (req, res) => {
 // DELETE /api/children/:id endpoint to Delete a child -
 
 // GET /api/children/:id/screenings to Retrieve screenings by child -
+router.get('/:id/screenings', (req, res) => {});
 
 // POST /api/countries/:id/screenings to Create a new community by country -
 
