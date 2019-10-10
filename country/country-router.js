@@ -20,6 +20,24 @@ router.get('/', (req, res) => {
     });
 });
 
+// GET /api/countries/:id endpoint to Retrieve country by ID -
+router.get('/:id', (req, res) => {
+  Countries.findById(req.params.id)
+    .then(country => {
+      if (country) {
+        res.status(200).json(country);
+      } else {
+        res
+          .status(404)
+          .json({ message: 'Could not find country with given ID' });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Failed to get country' });
+    });
+});
+
 // POST /api/countries endpoint to Create a new country -
 
 // PUT /api/countries/:id endpoint to Update a country - NOT ESSENTIAL
