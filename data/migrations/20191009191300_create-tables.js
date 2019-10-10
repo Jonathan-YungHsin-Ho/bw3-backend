@@ -22,6 +22,7 @@ exports.up = function(knex) {
       tbl.string('parent_name', 128).notNullable();
       tbl.string('contact', 128).notNullable();
       tbl.string('gender', 128).notNullable();
+      tbl.date('DOB').notNullable();
       tbl
         .integer('community_id')
         .unsigned()
