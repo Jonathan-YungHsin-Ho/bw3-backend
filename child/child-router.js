@@ -9,6 +9,16 @@ const router = express.Router();
 // CRUD Endpoints
 
 // GET /api/children endpoint to Retrieve children -
+router.get('/', (req, res) => {
+  Children.find()
+    .then(children => {
+      res.status(200).json(children);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Failed to get children' });
+    });
+});
 
 // POST /api/children endpoint to Create a new child -
 
