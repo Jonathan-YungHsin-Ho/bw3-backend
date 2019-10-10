@@ -8,11 +8,28 @@ const router = express.Router();
 
 // CRUD Endpoints
 
-// GET /api/children endpoint to Retrieve children -
+// GET /api/children endpoint to Retrieve children - FUNCTIONAL
 router.get('/', (req, res) => {
   Children.find()
     .then(children => {
       res.status(200).json(children);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Failed to get children' });
+    });
+});
+
+// GET /api/children/:id endpoint to Retrieve child by ID -
+router.get('/:id', (req, res) => {
+  console.log(req.params.id);
+  Children.findById(req.params.id)
+    .then(child => {
+      if (child) {
+        res.status(200).json(child);
+      } else {
+        res.status(404).json({ message: 'Could not find child with given ID' });
+      }
     })
     .catch(err => {
       console.log(err);
