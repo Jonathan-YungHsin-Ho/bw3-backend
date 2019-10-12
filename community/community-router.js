@@ -61,6 +61,8 @@ router.get('/:id/children', (req, res) => {
     });
 });
 
+// POST /api/communities/:id/children to Add child by community -
+
 // **********************************************************************
 
 module.exports = router;

@@ -61,7 +61,7 @@ router.get('/:id/screenings', (req, res) => {
     });
 });
 
-// POST /api/countries/:id/screenings to Create a new community by country -
+// POST /api/countries/:id/screenings to Create a new screening by child -
 
 // **********************************************************************
 

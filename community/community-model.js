@@ -4,6 +4,9 @@ module.exports = {
   find,
   findById,
   findChildren,
+  update,
+  remove,
+  addChild,
 };
 
 function find() {
@@ -44,3 +47,9 @@ function findChildren(id) {
     )
     .where({ community_id: id });
 }
+
+function update() {}
+
+function remove() {}
+
+function addChild() {}
