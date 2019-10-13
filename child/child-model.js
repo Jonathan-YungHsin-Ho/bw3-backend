@@ -11,7 +11,7 @@ function find() {
     .join('countries', 'countries.id', 'children.country_id')
     .join('communities', 'communities.id', 'children.community_id')
     .select(
-      'children.id as child_id',
+      'children.id',
       'children.name',
       'children.parent_name',
       'children.contact',
