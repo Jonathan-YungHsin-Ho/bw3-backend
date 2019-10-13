@@ -19,7 +19,7 @@ function find() {
     );
 }
 
-function findById(id) {
+function findById(community_id) {
   return db('communities')
     .join('countries', 'countries.id', 'communities.country_id')
     .select(
@@ -27,7 +27,7 @@ function findById(id) {
       'communities.community',
       'countries.country',
     )
-    .where({ community_id: id })
+    .where({ community_id })
     .first();
 }
 

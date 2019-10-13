@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 
 // GET /api/children/:id endpoint to Retrieve child by ID - FUNCTIONAL
 router.get('/:id', (req, res) => {
-  console.log(req.params.id);
+  // console.log(req.params.id);
   Children.findById(req.params.id)
     .then(child => {
       if (child) {
