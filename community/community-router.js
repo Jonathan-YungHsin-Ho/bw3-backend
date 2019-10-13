@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({ message: 'Failed to get community' });
+      res.status(500).json({ message: 'Failed to get community', err });
     });
 });
 
