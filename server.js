@@ -1,6 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const logger = require('./logger');
+const cors = require('cors');
 
 const countryRouter = require('./country/country-router');
 const communityRouter = require('./community/community-router');
@@ -11,6 +12,7 @@ const server = express();
 server.use(logger);
 server.use(helmet());
 server.use(express.json());
+server.use(cors());
 
 server.use('/api/countries', countryRouter);
 server.use('/api/communities', communityRouter);
