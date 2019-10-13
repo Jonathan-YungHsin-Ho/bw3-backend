@@ -22,7 +22,7 @@ function find() {
     );
 }
 
-function findById(child_id) {
+function findById(id) {
   const promises = [
     db('children')
       .join('countries', 'countries.id', 'children.country_id')
@@ -37,9 +37,9 @@ function findById(child_id) {
         'countries.country',
         'communities.community',
       )
-      .where({ child_id })
+      .where({ child_id: id })
       .first(),
-    findScreenings(child_id),
+    findScreenings(id),
   ];
 
   return Promise.all(promises).then(results => {
