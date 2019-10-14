@@ -22,12 +22,8 @@ function find() {
 function findById(id) {
   return db('communities')
     .join('countries', 'countries.id', 'communities.country_id')
-    .select(
-      'communities.id as community_id',
-      'communities.community',
-      'countries.country',
-    )
-    .where({ community_id: id })
+    .select('communities.id', 'communities.community', 'countries.country')
+    .where('communities.id', id)
     .first();
 }
 
