@@ -109,8 +109,8 @@ exports.seed = function(knex) {
       DOB: '09/28/2010',
     },
     {
-      name: 'Mrs. Salvatori',
-      parent_name: 'Ms. Moreno',
+      name: 'Leo',
+      parent_name: 'Ms. Salvatori',
       contact: 'salvatori@email.com',
       gender: 'F',
       community_id: 7,
