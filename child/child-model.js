@@ -28,7 +28,7 @@ function findById(id) {
       .join('countries', 'countries.id', 'children.country_id')
       .join('communities', 'communities.id', 'children.community_id')
       .select(
-        'children.id as child_id',
+        'children.id',
         'children.name',
         'children.parent_name',
         'children.contact',
@@ -37,7 +37,7 @@ function findById(id) {
         'countries.country',
         'communities.community',
       )
-      .where({ child_id: id })
+      .where('children.id', id)
       .first(),
     findScreenings(id),
   ];
