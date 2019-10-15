@@ -3,12 +3,11 @@ const helmet = require('helmet');
 const logger = require('./logger');
 const cors = require('cors');
 
-const countryRouter = require('./country/country-router');
-const communityRouter = require('./community/community-router');
-const childRouter = require('./child/child-router');
+const CountryRouter = require('./country/country-router');
+const CommunityRouter = require('./community/community-router');
+const ChildRouter = require('./child/child-router');
 
-const loginRouter = require('./login/login-router');
-const registerRouter = require('./register/register-router');
+const AuthRouter = require('./auth/auth-router');
 
 const server = express();
 
@@ -17,12 +16,11 @@ server.use(helmet());
 server.use(express.json());
 server.use(cors());
 
-server.use('/api/countries', countryRouter);
-server.use('/api/communities', communityRouter);
-server.use('/api/children', childRouter);
+server.use('/api/countries', CountryRouter);
+server.use('/api/communities', CommunityRouter);
+server.use('/api/children', ChildRouter);
 
-server.use('/api/login', loginRouter);
-server.use('/api/register', registerRouter);
+server.use('/api/auth', AuthRouter);
 
 server.get('/', (req, res) => {
   res.send(`<h2>Hello world from ICNST Back End!</h2>`);

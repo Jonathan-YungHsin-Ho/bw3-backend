@@ -35,7 +35,9 @@ function findById(id) {
         'children.gender',
         'children.DOB',
         'countries.country',
+        'children.country_id',
         'communities.community',
+        'children.community_id',
       )
       .where('children.id', id)
       .first(),
