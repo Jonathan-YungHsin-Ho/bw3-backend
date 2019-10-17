@@ -1,8 +1,18 @@
-const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 module.exports = function restricted(req, res, next) {
-  const { username, password } = req.headers;
+  const token = req.headers.authorization;
 
-  if (username && password) {
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+      if (err) {
+        res.status(401).json({ message: 'Not verified' });
+      } else {
+        req.decodedToken = decodedToken;
+        next();
+      }
+    });
+  } else {
+    res.status(400).json({ message: 'Token not found' });
   }
 };
