@@ -44,7 +44,7 @@ router.post('/login', (req, res) => {
             message: `Welcome, ${user.username}! You're logged in!`,
             username: user.username,
             role: user.role,
-            country: user.country,
+            country_id: user.country_id,
             token,
           });
         } else {
