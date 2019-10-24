@@ -17,7 +17,7 @@ function add(user) {
 }
 
 function find() {
-  return db('users').select('id', 'username', 'role', 'country');
+  return db('users').select('id', 'username', 'role', 'country_id');
 }
 
 function findBy(filter) {
@@ -26,7 +26,7 @@ function findBy(filter) {
 
 function findById(id) {
   return db('users')
-    .select('id', 'username', 'role', 'country')
+    .select('id', 'username', 'role', 'country_id')
     .where({ id })
     .first();
 }
