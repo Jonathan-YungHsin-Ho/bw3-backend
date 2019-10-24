@@ -43,6 +43,7 @@ router.post('/login', (req, res) => {
           res.status(200).json({
             message: `Welcome, ${user.username}! You're logged in!`,
             role: user.role,
+            country: user.country,
             token,
           });
         } else {
