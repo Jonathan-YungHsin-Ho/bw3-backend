@@ -63,7 +63,7 @@ function generateToken(user) {
   const payload = {
     subject: user.id,
     username: user.username,
-    country: user.country,
+    country_id: user.country_id,
     role: user.role,
   };
   const options = {
