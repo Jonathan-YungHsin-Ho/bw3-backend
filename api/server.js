@@ -22,7 +22,7 @@ server.use(cors());
 server.use('/api/auth', AuthRouter);
 server.use('/api/users', restricted, UserRouter);
 
-server.use('/api/countries', restricted, CountryRouter);
+server.use('/api/countries', CountryRouter);
 server.use('/api/communities', restricted, CommunityRouter);
 server.use('/api/children', restricted, ChildRouter);
 

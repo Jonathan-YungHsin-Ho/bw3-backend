@@ -2,6 +2,8 @@ const express = require('express');
 
 const Countries = require('./country-model');
 
+const restricted = require('../auth/restricted-middleware');
+
 const router = express.Router();
 
 // **********************************************************************
@@ -21,7 +23,7 @@ router.get('/', (req, res) => {
 });
 
 // GET /api/countries/:id endpoint to Retrieve country by ID - FUNCTIONAL
-router.get('/:id', (req, res) => {
+router.get('/:id', restricted, (req, res) => {
   Countries.findById(req.params.id)
     .then(country => {
       if (country) {
@@ -45,7 +47,7 @@ router.get('/:id', (req, res) => {
 // DELETE /api/countries/:id endpoint to Delete a country -
 
 // GET /api/countries/:id/communities to Retrieve communities by country - FUNCTIONAL
-router.get('/:id/communities', (req, res) => {
+router.get('/:id/communities', restricted, (req, res) => {
   Countries.findCommunities(req.params.id)
     .then(communities => {
       if (communities.length) {
