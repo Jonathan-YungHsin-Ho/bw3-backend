@@ -6,19 +6,19 @@ exports.seed = function(knex) {
       username: 'braziluser',
       password: bcrypt.hashSync('braziluser', 8),
       role: 'user',
-      country: 'Brazil',
+      country_id: 1,
     },
     {
       username: 'boliviauser',
       password: bcrypt.hashSync('boliviauser', 8),
       role: 'user',
-      country: 'Bolivia',
+      country_id: 2,
     },
     {
       username: 'cambodiauser',
       password: bcrypt.hashSync('cambodiauser', 8),
       role: 'user',
-      country: 'Cambodia',
+      country_id: 3,
     },
     {
       username: 'anna',

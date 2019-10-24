@@ -7,7 +7,13 @@ exports.up = function(knex) {
       .unique();
     tbl.string('password', 128).notNullable();
     tbl.string('role', 128).notNullable();
-    tbl.string('country', 128);
+    tbl
+      .integer('country_id')
+      .unsigned()
+      .references('id')
+      .inTable('countries')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE');
   });
 };
 
