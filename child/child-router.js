@@ -1,6 +1,7 @@
 const express = require('express');
 
 const Children = require('./child-model');
+const Screenings = require('../screenings/screening-model');
 
 const router = express.Router();
 
@@ -74,6 +75,24 @@ router.get('/:id/screenings', (req, res) => {
 });
 
 // POST /api/children/:id/screenings to Create a new screening by child -
+router.post('/:id/screenings', (req, res) => {
+  const screening = req.body;
+  screening.child_id = req.params.id;
+  console.log(screening);
+
+  if (screening.date && screening.height && screening.weight) {
+    Screenings.add(screening)
+      .then(saved => {
+        res.status(201).json({ added: saved });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ message: 'Error adding new screening' });
+      });
+  } else {
+    res.status(400).json({ message: 'Please provide screening information' });
+  }
+});
 
 // **********************************************************************
 

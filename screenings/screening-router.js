@@ -9,6 +9,16 @@ const router = express.Router();
 // CRUD Endpoints
 
 // GET /api/screenings endpoint to Retrieve screenings -
+router.get('/', (req, res) => {
+  Screenings.find()
+    .then(screening => {
+      res.status(200).json(screening);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Failed to get screenings' });
+    });
+});
 
 // GET /api/screenings/:id endpoint to Retrieve screening by ID -
 

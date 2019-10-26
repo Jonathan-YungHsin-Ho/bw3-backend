@@ -76,7 +76,7 @@ router.get('/:id/children', (req, res) => {
     });
 });
 
-// POST /api/communities/:id/children to Add child by community -
+// POST /api/communities/:id/children to Add child by community - FUNCTIONAL
 router.post('/:id/children', (req, res) => {
   const child = req.body;
   child.community_id = req.params.id;
