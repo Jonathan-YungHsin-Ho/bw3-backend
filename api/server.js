@@ -9,6 +9,7 @@ const UserRouter = require('../users/users-router');
 const CountryRouter = require('../country/country-router');
 const CommunityRouter = require('../community/community-router');
 const ChildRouter = require('../child/child-router');
+const ScreeningRouter = require('../screenings/screening-router');
 
 const restricted = require('../auth/restricted-middleware');
 
@@ -25,6 +26,7 @@ server.use('/api/users', restricted, UserRouter);
 server.use('/api/countries', CountryRouter);
 server.use('/api/communities', restricted, CommunityRouter);
 server.use('/api/children', restricted, ChildRouter);
+server.use('/api/screenings', restricted, ScreeningRouter);
 
 server.get('/', (req, res) => {
   res.send(`<h2>Hello world from ICNST Back End!</h2>`);

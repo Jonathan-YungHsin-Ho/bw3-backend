@@ -37,13 +37,25 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// POST /api/children endpoint to Create a new child -
-
 // PUT /api/children/:id endpoint to Update a child -
 
-// DELETE /api/children/:id endpoint to Delete a child -
+// DELETE /api/children/:id endpoint to Delete a child - FUNCTIONAL
+router.delete('/:id', (req, res) => {
+  Children.remove(req.params.id)
+    .then(count => {
+      if (count) {
+        res.status(200).json({ message: 'The child has been deleted' });
+      } else {
+        res.status(400).json({ message: 'Invalid child ID' });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Error deleting the child' });
+    });
+});
 
-// GET /api/children/:id/screenings to Retrieve screenings by child -
+// GET /api/children/:id/screenings to Retrieve screenings by child - FUNCTIONAL
 router.get('/:id/screenings', (req, res) => {
   Children.findScreenings(req.params.id)
     .then(screenings => {
@@ -61,7 +73,7 @@ router.get('/:id/screenings', (req, res) => {
     });
 });
 
-// POST /api/countries/:id/screenings to Create a new screening by child -
+// POST /api/children/:id/screenings to Create a new screening by child -
 
 // **********************************************************************
 

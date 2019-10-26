@@ -4,6 +4,9 @@ module.exports = {
   find,
   findById,
   findScreenings,
+  add,
+  // update,
+  remove,
 };
 
 function find() {
@@ -62,4 +65,21 @@ function findScreenings(id) {
       'children.name',
     )
     .where({ child_id: id });
+}
+
+function add(child) {
+  return db('children')
+    .insert(child, 'id')
+    .then(ids => {
+      const [id] = ids;
+      return findById(id);
+    });
+}
+
+// function update() {}
+
+function remove(id) {
+  return db('children')
+    .where({ id })
+    .del();
 }

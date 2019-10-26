@@ -5,9 +5,8 @@ module.exports = {
   findById,
   findCommunities,
   add,
-  update,
+  // update,
   remove,
-  addCommunity,
 };
 
 function find() {
@@ -27,10 +26,19 @@ function findCommunities(id) {
     .where({ country_id: id });
 }
 
-function add() {}
+function add(country) {
+  return db('countries')
+    .insert(country, 'id')
+    .then(ids => {
+      const [id] = ids;
+      return findById(id);
+    });
+}
 
-function update() {}
+// function update() {}
 
-function remove() {}
-
-function addCommunity() {}
+function remove(id) {
+  return db('countries')
+    .where({ id })
+    .del();
+}

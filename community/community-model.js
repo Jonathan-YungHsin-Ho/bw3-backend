@@ -4,9 +4,9 @@ module.exports = {
   find,
   findById,
   findChildren,
-  update,
+  add,
+  // update,
   remove,
-  addChild,
 };
 
 function find() {
@@ -49,8 +49,19 @@ function findChildren(id) {
     .where({ community_id: id });
 }
 
-function update() {}
+function add(community) {
+  return db('communities')
+    .insert(community, 'id')
+    .then(ids => {
+      const [id] = ids;
+      return findById(id);
+    });
+}
 
-function remove() {}
+// function update() {}
 
-function addChild() {}
+function remove(id) {
+  return db('communities')
+    .where({ id })
+    .del();
+}

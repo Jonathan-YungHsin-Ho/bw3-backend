@@ -6,7 +6,7 @@ const Users = require('../users/users-model');
 
 const router = express();
 
-// POST /api/auth/register Endpoint
+// POST /api/auth/register Endpoint - FUNCTIONAL
 router.post('/register', (req, res) => {
   const user = req.body;
 
@@ -30,7 +30,7 @@ router.post('/register', (req, res) => {
   }
 });
 
-// POST /api/auth/login Endpoint
+// POST /api/auth/login Endpoint - FUNCTIONAL
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
