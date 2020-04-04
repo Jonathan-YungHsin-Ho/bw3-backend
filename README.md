@@ -1,4 +1,4 @@
-# Ride For Life - Back End API
+# International Child Nutrition Status Tracking - Back End API
 
 ## Project Name
 
